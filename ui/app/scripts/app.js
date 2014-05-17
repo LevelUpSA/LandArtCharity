@@ -1,19 +1,19 @@
 'use strict';
 
-angular
-  .module('uiApp', [
+var app = angular.module('landartApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+]);
+
+app.config(function($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+        .when('/', {
+            templateUrl: 'views/index.html',
+            controller: 'IndexController'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+});

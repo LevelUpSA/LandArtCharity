@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var artists = require('./routes/artists');
+var test = require('./routes/test');
 
 // Creates Express.js App object
 var app = express();
@@ -22,12 +23,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('less-middleware')({
+    src: path.join(__dirname, 'public')
+}));
+app.use(express.static(path.join(__dirname, '../ui/app')));
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/artists', artists);
+app.use('/api/users', users);
+app.use('/api/artists', artists);
+app.use('/api/test', test);
+app.use('*', routes);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
