@@ -5,5 +5,6 @@ app.controller('IndexController', function($scope, Index) {
 
     $scope.buttonClick = function() {
         $scope.data = Index.get();
+        $scope.msg = "Hello World!";
     };
 });
