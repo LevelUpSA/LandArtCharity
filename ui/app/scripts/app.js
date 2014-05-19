@@ -1,13 +1,13 @@
 'use strict';
 
-var app = angular.module('landartApp', [
+var App = angular.module('landartApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute'
 ]);
 
-app.config(function($routeProvider) {
+App.config(function($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/index.html',

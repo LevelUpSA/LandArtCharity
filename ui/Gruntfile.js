@@ -306,32 +306,6 @@ module.exports = function(grunt) {
             ]
         },
 
-        // By default, your `index.html`'s <!-- Usemin block --> will take care of
-        // minification. These next options are pre-configured if you do not wish
-        // to use the Usemin blocks.
-        // cssmin: {
-        //   dist: {
-        //     files: {
-        //       '<%= yeoman.dist %>/styles/main.css': [
-        //         '.tmp/styles/{,*/}*.css',
-        //         '<%= yeoman.app %>/styles/{,*/}*.css'
-        //       ]
-        //     }
-        //   }
-        // },
-        // uglify: {
-        //   dist: {
-        //     files: {
-        //       '<%= yeoman.dist %>/scripts/scripts.js': [
-        //         '<%= yeoman.dist %>/scripts/scripts.js'
-        //       ]
-        //     }
-        //   }
-        // },
-        // concat: {
-        //   dist: {}
-        // },
-
         // Test settings
         karma: {
             unit: {
@@ -342,7 +316,7 @@ module.exports = function(grunt) {
 
         protractor: {
             options: {
-                configFile: "protractor.conf.js", // Default config file
+                configFile: 'protractor.conf.js', // Default config file
                 keepAlive: true, // If false, the grunt process stops when the test fails.
                 noColor: false, // If true, protractor will not use colors in its output.
                 args: {
@@ -359,15 +333,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // protractor_webdriver: {
-        //     your_target: {
-        //         options: {
-        //             path: 'node_modules/protractor/selenium/chromedriver',
-        //             command: 'custom-webdriver-manager start',
-        //         },
-        //     },
-        // },
     });
 
 
@@ -391,9 +356,10 @@ module.exports = function(grunt) {
         grunt.task.run(['serve:' + target]);
     });
 
+
     grunt.registerTask('test:unit', [
         'clean:server',
-        // 'concurrent:test',
+        'concurrent:test',
         'autoprefixer',
         'connect:test',
         'karma:unit'
@@ -404,8 +370,13 @@ module.exports = function(grunt) {
         'concurrent:test',
         'autoprefixer',
         'connect:test',
-        'connect:livereload',
+        // 'connect:livereload',
         'protractor:singlerun'
+    ]);
+
+    grunt.registerTask('test', [
+        'test:unit',
+        'test:e2e'
     ]);
 
     grunt.registerTask('build', [

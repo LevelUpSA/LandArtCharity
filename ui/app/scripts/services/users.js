@@ -1,5 +1,5 @@
 'use strict';
 
-app.factory('User', function($resource) {
+App.factory('User', function($resource) {
     return $resource('/api/users');
 });
