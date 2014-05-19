@@ -15,8 +15,4 @@ describe('Controller: IndexController', function() {
             $scope: scope
         });
     }));
-
-    it('should attach data with message Hello World to the scope', function() {
-        expect(scope.msg).toBe("Hello World!");
-    });
 });
